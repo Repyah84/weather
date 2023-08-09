@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { GeocodingApiService } from '@api';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  title = 'weather';
+  public constructor(private readonly _geocoding: GeocodingApiService) {
+    this._geocoding.getCityGeocoding('London').subscribe((r) => {
+      console.log(r);
+    });
+  }
 }

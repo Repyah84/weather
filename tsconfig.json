@@ -21,12 +21,12 @@
     "useDefineForClassFields": false,
     "lib": ["ES2022", "dom"],
     "paths": {
-      "@api": ["src/app/api/index.ts"],
-      "@const": ["src/app/const/index.js"],
-      "@modules": ["src/app/modules/index.js"],
-      "@pages": ["src/app/pages/index.js"],
-      "@types": ["src/app/types/index.js"],
-      "@services": ["src/app/services/index.ts"]
+      "@api": ["./src/app/api"],
+      "@const": ["./src/app/const"],
+      "@modules": ["./src/app/modules"],
+      "@pages": ["./src/app/pages"],
+      "@types": ["./src/app/types"],
+      "@services": ["./src/app/services"]
     }
   },
   "angularCompilerOptions": {
