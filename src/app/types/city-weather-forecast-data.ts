@@ -11,8 +11,12 @@ type ForecastDataCityWeatherSys = Pick<CityWeatherSys, 'sunrise' | 'sunset'>;
 export interface CityWeatherForecastData
   extends ForecastDataCityWeather,
     ForecastDataCityWeatherSys {
-  //Country code (GB, JP etc.). Please note that built-in geocoder functionality has been deprecated
+  /**
+   * Country code (GB, JP etc.). Please note that built-in geocoder functionality has been deprecated
+   */
   readonly country: string;
-  // City population
+  /**
+   * City population
+   */
   readonly population: number;
 }

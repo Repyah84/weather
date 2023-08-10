@@ -1,4 +1,6 @@
 export interface CityWeatherClouds {
-  //Cloudiness, %
+  /**
+   * Cloudiness, %
+   */
   readonly all: number;
 }
