@@ -1,3 +1,4 @@
+//Name of the found location in different languages. The list of names can be different for different locations
 export const CITY_LOCAL_NAME_LIST = [
   'ms',
   'gu',

@@ -17,3 +17,11 @@ export * from './city-weather-sys';
 export * from './city-weather-volume';
 
 export * from './city-weather';
+
+export * from './city-weather-forecast';
+
+export * from './city-weather-forecast-list-item';
+
+export * from './city-weather-forecast-main';
+
+export * from './city-weather-forecast-data';
