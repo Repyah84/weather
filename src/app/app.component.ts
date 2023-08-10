@@ -1,6 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { GeocodingApiService, CityWeatherApiService } from '@api';
-import { combineLatest, map, switchMap } from 'rxjs';
+import {
+  GeocodingApiService,
+  CityWeatherApiService,
+  WeatherIconApiService,
+} from '@api';
+import { combineLatest, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-root',
