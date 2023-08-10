@@ -1,10 +1,12 @@
 import { CityLocalNames } from './city-local-names';
+import { CityWeatherCoord } from './city-weather-coord';
 
-export interface CityGeocoding {
+export interface CityGeocoding extends CityWeatherCoord {
+  //Country of the found location
   readonly country: string;
-  readonly lat: number;
-  readonly lon: number;
+  //Name of the found location
   readonly name: string;
-  readonly state: string;
-  readonly local_names: CityLocalNames;
+  //State of the found location
+  readonly state?: string;
+  readonly local_names?: CityLocalNames;
 }

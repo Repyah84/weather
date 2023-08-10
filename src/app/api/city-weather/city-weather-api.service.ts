@@ -1,23 +1,27 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { API_KEY, API_PATH } from '@const';
-import { CityGeocoding } from '@types';
+import { CityWeather, CityWeatherCoord } from '@types';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class GeocodingApiService {
+export class CityWeatherApiService {
   public constructor(private readonly _http: HttpClient) {}
 
-  public getCityGeocoding(cityName: string): Observable<CityGeocoding[]> {
+  public getCityWeather({
+    lat,
+    lon,
+  }: CityWeatherCoord): Observable<CityWeather> {
     const params = new HttpParams().appendAll({
-      q: cityName,
       appid: API_KEY,
-      limit: 5,
+      lat,
+      lon,
+      units: 'metric',
     });
 
-    return this._http.get<CityGeocoding[]>(`${API_PATH}/geo/1.0/direct`, {
+    return this._http.get<CityWeather>(`${API_PATH}/data/2.5/weather`, {
       params,
     });
   }

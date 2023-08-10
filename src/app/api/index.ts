@@ -1,3 +1,3 @@
 export * from './geocoding/geocoding-api.service';
 
-export * from './one-call/one-call-api.service';
+export * from './city-weather/city-weather-api.service';
