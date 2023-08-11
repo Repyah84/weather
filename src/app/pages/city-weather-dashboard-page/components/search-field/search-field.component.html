@@ -1,0 +1,5 @@
+<form [formGroup]="group" (ngSubmit)="onSubmit()">
+  <input [formControl]="group.controls.search" type="text" />
+
+  <button type="submit">Search</button>
+</form>

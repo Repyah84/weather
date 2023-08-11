@@ -2,16 +2,22 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CityWeatherDashboardPageComponent } from './city-weather-dashboard-page.component';
 import { RouterModule, Routes } from '@angular/router';
+import { SearchFieldComponent } from './components/search-field/search-field.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { cityWeatherDashboardPageResolver } from './city-weather-dashboard-page.resolver';
 
 const routes: Routes = [
   {
     path: '',
     component: CityWeatherDashboardPageComponent,
+    resolve: {
+      cityWeatherList: cityWeatherDashboardPageResolver,
+    },
   },
 ];
 
 @NgModule({
-  declarations: [CityWeatherDashboardPageComponent],
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  declarations: [CityWeatherDashboardPageComponent, SearchFieldComponent],
+  imports: [CommonModule, RouterModule.forChild(routes), ReactiveFormsModule],
 })
 export class CityWeatherDashboardPageModule {}

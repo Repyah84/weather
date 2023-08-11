@@ -10,11 +10,14 @@ import { Observable } from 'rxjs';
 export class GeocodingApiService {
   public constructor(private readonly _http: HttpClient) {}
 
-  public getCityGeocoding(cityName: string): Observable<CityGeocoding[]> {
+  public getCityGeocoding(
+    cityName: string,
+    limit = 5
+  ): Observable<CityGeocoding[]> {
     const params = new HttpParams().appendAll({
       q: cityName,
       appid: API_KEY,
-      limit: 5,
+      limit,
     });
 
     return this._http.get<CityGeocoding[]>(`${API_PATH}/geo/1.0/direct`, {
