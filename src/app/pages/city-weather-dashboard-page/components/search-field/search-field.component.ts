@@ -5,12 +5,15 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import {
-  FormControl,
-  FormControlOptions,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+function transformToString(value: string | null | undefined): string {
+  if (!value) {
+    return '';
+  }
+
+  return value;
+}
 
 @Component({
   selector: 'app-search-field',
@@ -19,17 +22,19 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchFieldComponent {
-  @Input()
-  public value: string | undefined;
+  @Input({ transform: transformToString })
+  public set value(value: string) {
+    this.group.controls.search.setValue(value);
+  }
 
   @Input()
   public error: string | undefined;
 
   @Output()
-  public readonly inSearchCity = new EventEmitter<string>();
+  public readonly inSearchCity = new EventEmitter<string | undefined>();
 
   public readonly group = new FormGroup({
-    search: new FormControl<string>('', {
+    search: new FormControl<string | undefined>('', {
       nonNullable: true,
       validators: [Validators.minLength(3)],
     }),

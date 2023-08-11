@@ -15,21 +15,24 @@ import { CityWeatherFull, RouterParams } from '@types';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CityWeatherDashboardPageComponent implements OnChanges {
-  public foo = '';
-
   @Input()
   public cityWeatherList: CityWeatherFull[] | null = null;
+
+  @Input()
+  public search: string | undefined;
 
   public constructor(private readonly _route: Router) {}
 
   public ngOnChanges(changes: SimpleChanges): void {
     console.log('LIST', this.cityWeatherList);
+
+    console.log('search', this.search);
   }
 
-  public onSearch(value: string): void {
+  public onSearch(value: string | undefined): void {
     this._route.navigate([], {
       queryParams: {
-        [RouterParams.SEARCH]: value,
+        [RouterParams.SEARCH]: value || null,
       },
     });
   }

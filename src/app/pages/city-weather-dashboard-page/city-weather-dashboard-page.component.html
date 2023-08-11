@@ -1,4 +1,8 @@
-<app-search-field (inSearchCity)="onSearch($event)"></app-search-field>
+<app-search-field
+  class="search"
+  [value]="search"
+  (inSearchCity)="onSearch($event)"
+></app-search-field>
 
 <div class="city-card-list">
   <app-city-weather-card

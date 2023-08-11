@@ -50,7 +50,9 @@
 
 .weather-image {
   display: block;
+
   max-width: 100px;
+
   object-fit: cover;
 }
 
@@ -60,7 +62,8 @@
 
 .details__title {
   font-weight: 700;
-  border-bottom: 2px solid var(--city-weather-color-primary);
+
+  box-shadow: 0 1px 0 0 var(--city-weather-color-primary);
 
   margin-bottom: 10px;
 }
@@ -71,7 +74,6 @@
   padding: 5px;
 
   border: 1px solid var(--city-weather-color-primary);
-
   border-radius: 10px;
 }
 
@@ -81,8 +83,6 @@
 
 .details-box {
   display: flex;
-
   flex-wrap: wrap;
-
   gap: 10px;
 }
