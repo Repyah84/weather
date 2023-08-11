@@ -26,6 +26,6 @@ export * from './city-weather-forecast-main';
 
 export * from './city-weather-forecast-data';
 
-export * from './route-params';
+export * from './router-params';
 
 export * from './city-weather-full';

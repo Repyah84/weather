@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SearchFieldComponent } from './components/search-field/search-field.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { cityWeatherDashboardPageResolver } from './city-weather-dashboard-page.resolver';
+import { CityWeatherCardModule } from '@modules';
 
 const routes: Routes = [
   {
@@ -13,11 +14,17 @@ const routes: Routes = [
     resolve: {
       cityWeatherList: cityWeatherDashboardPageResolver,
     },
+    runGuardsAndResolvers: 'paramsOrQueryParamsChange',
   },
 ];
 
 @NgModule({
   declarations: [CityWeatherDashboardPageComponent, SearchFieldComponent],
-  imports: [CommonModule, RouterModule.forChild(routes), ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    ReactiveFormsModule,
+    CityWeatherCardModule,
+  ],
 })
 export class CityWeatherDashboardPageModule {}

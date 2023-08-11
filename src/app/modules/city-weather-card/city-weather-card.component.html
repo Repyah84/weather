@@ -1,1 +1,66 @@
-<p>city-weather-card works!</p>
+<div class="head">
+  <div class="city-info-box">
+    <div *ngIf="weather.geocoding as geocoding" class="city-info">
+      <span class="city-name">{{ geocoding.name }}</span>
+      <span class="city-state">{{ geocoding.state }}</span>
+      <span class="city-country">{{ geocoding.country }}</span>
+    </div>
+
+    <div class="temperature">
+      <span class="temperature__value">{{
+        weather.cityWeather.main.temp
+      }}</span>
+      <span class="temperature__metric">C</span>
+    </div>
+  </div>
+
+  <div class="weather" *ngFor="let item of weather.cityWeather.weather">
+    <img
+      class="weather-image"
+      [src]="item.icon | weatherIcon : 4"
+      alt="weather"
+    />
+
+    <span class="weather-description">{{ item.description }}</span>
+  </div>
+</div>
+
+<div class="body">
+  <div *ngIf="weather.cityWeather.main as main" class="details">
+    <div class="details__title">Details</div>
+
+    <div class="details-box">
+      <div class="details__item">
+        <span>Fils like: </span>
+        <span class="weather__value">{{ main.feels_like }}</span>
+      </div>
+
+      <div class="details__item">
+        <span>Max Temp: </span>
+        <span class="weather__value">{{ main.temp_max }}</span>
+      </div>
+
+      <div class="details__item">
+        <span>Min Temp: </span>
+        <span class="weather__value">{{ main.temp_min }}</span>
+      </div>
+
+      <div class="details__item">
+        <span>Wind: </span>
+        <span class="weather__value"
+          >{{ weather.cityWeather.wind.speed }}/ms</span
+        >
+      </div>
+
+      <div class="details__item">
+        <span>Humidity: </span>
+        <span class="weather__value">{{ main.humidity }}</span>
+      </div>
+
+      <div class="details__item">
+        <span>Pressure: </span>
+        <span class="weather__value">{{ main.pressure }}</span>
+      </div>
+    </div>
+  </div>
+</div>

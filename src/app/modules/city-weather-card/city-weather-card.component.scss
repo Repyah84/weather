@@ -1,9 +1,88 @@
 :host {
   display: block;
 
-  padding: 20px;
-  //remove
-  border: 2px solid #5773fe;
+  padding: 10px;
 
-  box-shadow: var(--city-weather-card-elevation);
+  border-radius: 10px;
+
+  box-shadow: var(--city-weather-card-elevation-x);
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.city-info-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.city-info {
+  margin-top: 20px;
+
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.temperature {
+  display: flex;
+  column-gap: 10px;
+
+  font-size: 60px;
+}
+
+.temperature__value {
+  color: var(--city-weather-color-ascent);
+  font-weight: 700;
+}
+
+.weather {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.weather-image {
+  display: block;
+  max-width: 100px;
+  object-fit: cover;
+}
+
+.weather-description {
+  font-size: 14px;
+}
+
+.details__title {
+  font-weight: 700;
+  border-bottom: 2px solid var(--city-weather-color-primary);
+
+  margin-bottom: 10px;
+}
+
+.details__item {
+  font-size: 12px;
+
+  padding: 5px;
+
+  border: 1px solid var(--city-weather-color-primary);
+
+  border-radius: 10px;
+}
+
+.weather__value {
+  font-weight: 700;
+}
+
+.details-box {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
 }

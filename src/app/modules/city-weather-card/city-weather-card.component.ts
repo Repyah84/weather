@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { CityWeather } from '@types';
+import { CityWeatherFull } from '@types';
 
 @Component({
   selector: 'app-city-weather-card',
@@ -9,5 +9,5 @@ import { CityWeather } from '@types';
 })
 export class CityWeatherCardComponent {
   @Input({ required: true })
-  public cityWeather!: CityWeather;
+  public weather!: CityWeatherFull;
 }
