@@ -1,38 +1,25 @@
 import { Injectable } from '@angular/core';
 import { GeocodingApiService } from '@api';
 import { CACHE_TIME } from '@const';
-import { handlingDataCache } from '@helpers';
 
-import { CityGeocoding } from '@types';
+import { CityGeocoding, KeyCache } from '@types';
 import { Observable } from 'rxjs';
+import { DataCacheService } from '../data-cache/data-cache.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GeocodingCacheService {
-  private readonly _geocodingCache = new Map<
-    string,
-    () => Observable<CityGeocoding[]>
-  >();
+  public constructor(
+    private readonly _geocoding: GeocodingApiService,
+    private readonly _dataCache: DataCacheService
+  ) {}
 
-  public constructor(private readonly _geocoding: GeocodingApiService) {}
-
-  public getGeocoding(
-    cityName: string,
-    limit?: number
-  ): Observable<CityGeocoding[]> {
-    let geocoding = this._geocodingCache.get(cityName);
-
-    if (geocoding === undefined) {
-      geocoding = handlingDataCache<CityGeocoding[]>({
-        cachingObservable: () =>
-          this._geocoding.getCityGeocoding(cityName, limit),
-        timeCache: CACHE_TIME,
-      });
-
-      this._geocodingCache.set(cityName, geocoding);
-    }
-
-    return geocoding();
+  public getCityGeocodingCache(cityName: string): Observable<CityGeocoding[]> {
+    return this._dataCache.getCachedData({
+      key: `${KeyCache.CITY_GEOCODING}${cityName}`,
+      cachingObservable: () => this._geocoding.getCityGeocoding(cityName),
+      cacheTime: CACHE_TIME,
+    });
   }
 }

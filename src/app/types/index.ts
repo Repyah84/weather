@@ -29,3 +29,5 @@ export * from './city-weather-forecast-data';
 export * from './router-params';
 
 export * from './city-weather-full';
+
+export * from './key-cache';

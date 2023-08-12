@@ -4,4 +4,4 @@ export const DEFAULT_CITY_LIST = [
   'Paris',
   'Berlin',
   'Kyiv',
-];
+] as const;

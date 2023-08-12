@@ -1,0 +1,4 @@
+export enum KeyCache {
+  CITY_WEATHER = 'CITY_WEATHER',
+  CITY_GEOCODING = 'CITY_GEOCODING',
+}

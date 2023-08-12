@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { DEFAULT_CITY_LIST } from '@const';
-import { CityGeocoding, CityWeatherFull } from '@types';
+import { CityGeocoding, CityWeatherCoord, CityWeatherFull } from '@types';
 import { Observable, forkJoin, map, of, switchMap } from 'rxjs';
+
 import { GeocodingCacheService } from '../geocoding-cache/geocoding-cache.service';
 import { CityWeatherCacheService } from '../city-weather-cache/city-weather-cache.service';
 
@@ -10,14 +11,14 @@ import { CityWeatherCacheService } from '../city-weather-cache/city-weather-cach
 })
 export class WeatherCityListService {
   public constructor(
-    private readonly _cityWeatherCache: CityWeatherCacheService,
-    private readonly _geocodingCache: GeocodingCacheService
+    private readonly _geocoding: GeocodingCacheService,
+    private readonly _cityWeather: CityWeatherCacheService
   ) {}
 
   public getCityWeatherList(
     cityName: string
   ): Observable<CityWeatherFull[] | null> {
-    return this._geocodingCache.getGeocoding(cityName).pipe(
+    return this._geocoding.getCityGeocodingCache(cityName).pipe(
       switchMap((geocodingList) => {
         if (geocodingList.length === 0) {
           return of(null);
@@ -30,7 +31,9 @@ export class WeatherCityListService {
 
   public getDefaultCityList(): Observable<CityWeatherFull[]> {
     const defaultList = DEFAULT_CITY_LIST.map((cityName) =>
-      this._geocodingCache.getGeocoding(cityName, 1).pipe(map(([city]) => city))
+      this._geocoding
+        .getCityGeocodingCache(cityName)
+        .pipe(map(([city]) => city))
     );
 
     return forkJoin([...defaultList]).pipe(
@@ -43,14 +46,16 @@ export class WeatherCityListService {
   private _getCityWeatherListFull(
     list: CityGeocoding[]
   ): Observable<CityWeatherFull[]> {
-    const weatherList = list.map((geocoding) =>
-      this._cityWeatherCache
-        .getCityWeather(`${geocoding.lat};${geocoding.lon}`, {
-          lat: geocoding.lat,
-          lon: geocoding.lon,
-        })
-        .pipe(map((cityWeather) => ({ geocoding, cityWeather })))
-    );
+    const weatherList = list.map((geocoding) => {
+      const coord: CityWeatherCoord = {
+        lat: geocoding.lat,
+        lon: geocoding.lon,
+      };
+
+      return this._cityWeather
+        .getCityWeatherCache(coord)
+        .pipe(map((cityWeather) => ({ geocoding, cityWeather })));
+    });
 
     return forkJoin([...weatherList]);
   }
