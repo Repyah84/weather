@@ -23,6 +23,7 @@ export class CityWeatherDashboardPageComponent implements OnChanges {
 
   public constructor(private readonly _route: Router) {}
 
+  //TODO Remove
   public ngOnChanges(changes: SimpleChanges): void {
     console.log('LIST', this.cityWeatherList);
 

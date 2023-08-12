@@ -3,15 +3,15 @@ import { DEFAULT_CITY_LIST } from '@const';
 import { CityGeocoding, CityWeatherCoord, CityWeatherFull } from '@types';
 import { Observable, forkJoin, map, of, switchMap } from 'rxjs';
 
-import { GeocodingCacheService } from '../geocoding-cache/geocoding-cache.service';
+import { CityGeocodingCacheService } from '../city-geocoding-cache/city-geocoding-cache.service';
 import { CityWeatherCacheService } from '../city-weather-cache/city-weather-cache.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class WeatherCityListService {
+export class CityWeatherCityListService {
   public constructor(
-    private readonly _geocoding: GeocodingCacheService,
+    private readonly _geocoding: CityGeocodingCacheService,
     private readonly _cityWeather: CityWeatherCacheService
   ) {}
 

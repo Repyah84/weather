@@ -25,9 +25,9 @@ export class GeocodingApiService {
     });
   }
 
-  public getReverseGeocoding(
+  public getCityGeocodingReverse(
     { lat, lon }: CityWeatherCoord,
-    limit: 1
+    limit = 1
   ): Observable<CityGeocoding> {
     const params = new HttpParams().appendAll({
       appid: API_KEY,

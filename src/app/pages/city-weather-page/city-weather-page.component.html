@@ -1,1 +1,5 @@
 <p>city-weather-page works!</p>
+
+<app-city-weather-forecast
+  [forecast]="weatherForecast.weatherForecast.list | weatherForecastTransform"
+></app-city-weather-forecast>

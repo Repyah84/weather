@@ -15,7 +15,7 @@ export interface CityWeatherForecastListItem
   /**
    * Time of data forecasted, ISO, UTC
    */
-  readonly dt_txt: Date;
+  readonly dt_txt: string;
 
   readonly main: CityWeatherForecastMain;
 }

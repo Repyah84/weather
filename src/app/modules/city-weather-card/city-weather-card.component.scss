@@ -6,6 +6,8 @@
   border-radius: 10px;
 
   box-shadow: var(--city-weather-card-elevation-x);
+
+  background: linear-gradient(#ffffff 40%, #e9eefa);
 }
 
 .head {
@@ -58,6 +60,10 @@
 
 .weather-description {
   font-size: 14px;
+
+  max-width: 150px;
+
+  text-align: right;
 }
 
 .details__action {

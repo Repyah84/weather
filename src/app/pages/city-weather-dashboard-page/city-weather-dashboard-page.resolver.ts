@@ -1,13 +1,13 @@
 import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, ResolveFn } from '@angular/router';
-import { WeatherCityListService } from '@services';
+import { CityWeatherCityListService } from '@services';
 import { CityWeatherFull, RouterParams } from '@types';
 import { Observable, of } from 'rxjs';
 
 export const cityWeatherDashboardPageResolver: ResolveFn<
   Observable<CityWeatherFull[] | null>
 > = (route: ActivatedRouteSnapshot) => {
-  const cityList = inject(WeatherCityListService);
+  const cityList = inject(CityWeatherCityListService);
 
   const param = route.queryParamMap.get(RouterParams.SEARCH);
 

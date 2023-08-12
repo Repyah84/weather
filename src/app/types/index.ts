@@ -31,3 +31,7 @@ export * from './router-params';
 export * from './city-weather-full';
 
 export * from './key-cache';
+
+export * from './city-weather-forecast-full';
+
+export * from './city-weather-forecast-transform';
