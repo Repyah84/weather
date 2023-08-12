@@ -24,8 +24,7 @@ export class CityWeatherCacheService {
 
     if (cityWeather === undefined) {
       cityWeather = handlingDataCache<CityWeather>({
-        functionThatReturnsObservable: () =>
-          this._cityWeather.getCityWeather(coord),
+        cachingObservable: () => this._cityWeather.getCityWeather(coord),
         timeCache: CACHE_TIME,
       });
 

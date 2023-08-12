@@ -1,12 +1,12 @@
 import { Observable, Subject, share, ReplaySubject } from 'rxjs';
 
 interface DataCache<T> {
-  readonly functionThatReturnsObservable: () => Observable<T>;
+  readonly cachingObservable: () => Observable<T>;
   readonly timeCache: number;
 }
 
 export function handlingDataCache<T>({
-  functionThatReturnsObservable,
+  cachingObservable,
   timeCache,
 }: DataCache<T>): () => Observable<T> {
   const _destroyer = new Subject<void>();
@@ -15,7 +15,7 @@ export function handlingDataCache<T>({
 
   let date = initDate();
 
-  const _obs = functionThatReturnsObservable().pipe(
+  const _obs = cachingObservable().pipe(
     share({
       connector: () => new ReplaySubject(1),
       resetOnComplete: () => _destroyer,

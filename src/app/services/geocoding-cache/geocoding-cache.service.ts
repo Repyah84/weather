@@ -25,7 +25,7 @@ export class GeocodingCacheService {
 
     if (geocoding === undefined) {
       geocoding = handlingDataCache<CityGeocoding[]>({
-        functionThatReturnsObservable: () =>
+        cachingObservable: () =>
           this._geocoding.getCityGeocoding(cityName, limit),
         timeCache: CACHE_TIME,
       });
