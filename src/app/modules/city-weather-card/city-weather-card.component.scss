@@ -60,12 +60,15 @@
   font-size: 14px;
 }
 
-.details__title {
+.details__action {
+  display: flex;
+  justify-content: space-between;
+
+  margin: 10px 0;
+
+  box-shadow: 0 1px 0 0 var(--city-weather-color-secondary);
+
   font-weight: 700;
-
-  box-shadow: 0 1px 0 0 var(--city-weather-color-primary);
-
-  margin-bottom: 10px;
 }
 
 .details__item {
@@ -73,7 +76,7 @@
 
   padding: 5px;
 
-  border: 1px solid var(--city-weather-color-primary);
+  box-shadow: 0 0 2px 1px var(--city-weather-color-primary);
   border-radius: 10px;
 }
 
@@ -85,4 +88,9 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+.link,
+.details__title {
+  color: var(--city-weather-color-primary);
 }

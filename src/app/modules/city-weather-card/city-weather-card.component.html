@@ -27,7 +27,11 @@
 
 <div class="body">
   <div *ngIf="weather.cityWeather.main as main" class="details">
-    <div class="details__title">Details</div>
+    <div class="details__action">
+      <div class="details__title">Details</div>
+
+      <a class="link" [routerLink]="['/city', coord]">Details more</a>
+    </div>
 
     <div class="details-box">
       <div class="details__item">

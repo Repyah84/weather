@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { CityWeatherFull } from '@types';
+import { parsToString } from '@helpers';
+import { CityWeatherCoord, CityWeatherFull } from '@types';
 
 @Component({
   selector: 'app-city-weather-card',
@@ -10,4 +11,10 @@ import { CityWeatherFull } from '@types';
 export class CityWeatherCardComponent {
   @Input({ required: true })
   public weather!: CityWeatherFull;
+
+  public get coord(): string {
+    const { lat, lon } = this.weather.geocoding;
+
+    return parsToString<CityWeatherCoord>({ lat, lon });
+  }
 }

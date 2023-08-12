@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { GeocodingApiService } from '@api';
 import { CACHE_TIME } from '@const';
-import { HandlingDataCache } from '@models';
+import { handlingDataCache } from '@helpers';
+
 import { CityGeocoding } from '@types';
 import { Observable } from 'rxjs';
 
@@ -11,7 +12,7 @@ import { Observable } from 'rxjs';
 export class GeocodingCacheService {
   private readonly _geocodingCache = new Map<
     string,
-    HandlingDataCache<CityGeocoding[]>
+    () => Observable<CityGeocoding[]>
   >();
 
   public constructor(private readonly _geocoding: GeocodingApiService) {}
@@ -23,21 +24,15 @@ export class GeocodingCacheService {
     let geocoding = this._geocodingCache.get(cityName);
 
     if (geocoding === undefined) {
-      geocoding = new HandlingDataCache<CityGeocoding[]>(
-        this._getObservable(cityName, limit),
-        CACHE_TIME
-      );
+      geocoding = handlingDataCache<CityGeocoding[]>({
+        functionThatReturnsObservable: () =>
+          this._geocoding.getCityGeocoding(cityName, limit),
+        timeCache: CACHE_TIME,
+      });
 
       this._geocodingCache.set(cityName, geocoding);
     }
 
-    return geocoding.getObs();
-  }
-
-  private _getObservable(
-    cityName: string,
-    limit?: number
-  ): () => Observable<CityGeocoding[]> {
-    return () => this._geocoding.getCityGeocoding(cityName, limit);
+    return geocoding();
   }
 }

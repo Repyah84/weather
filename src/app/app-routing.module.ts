@@ -8,7 +8,7 @@ const routes: Routes = [
       import('@pages').then((m) => m.CityWeatherDashboardPageModule),
   },
   {
-    path: 'city/:id',
+    path: 'city/:coord',
     loadChildren: () => import('@pages').then((m) => m.CityWeatherPageModule),
   },
   {
