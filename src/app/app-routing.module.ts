@@ -4,6 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
+    redirectTo: 'dashboard',
+  },
+  {
+    path: 'dashboard',
     loadChildren: () =>
       import('@pages').then((m) => m.CityWeatherDashboardPageModule),
   },
@@ -18,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '',
+    redirectTo: 'dashboard',
   },
 ];
 

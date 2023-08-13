@@ -30,7 +30,12 @@
     <div class="details__action">
       <div class="details__title">Details</div>
 
-      <a class="link" [routerLink]="['/city', coord]">Details more</a>
+      <a
+        class="link"
+        [routerLink]="['/city', coord]"
+        queryParamsHandling="merge"
+        >Details more</a
+      >
     </div>
 
     <div class="details-box">

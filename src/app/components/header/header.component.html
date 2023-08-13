@@ -1,0 +1,8 @@
+<a
+  *ngFor="let link of routerLinks"
+  [routerLink]="[link.link]"
+  routerLinkActive="is-active"
+  queryParamsHandling="merge"
+  class="router-link"
+  >{{ link.title }}</a
+>
