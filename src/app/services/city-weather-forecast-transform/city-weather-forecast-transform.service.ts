@@ -5,9 +5,7 @@ import {
 } from '@types';
 import { DateService } from '../date/date.service';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class CityWeatherForecastTransformService {
   private readonly transformMap = new Map<
     string,
@@ -27,7 +25,7 @@ export class CityWeatherForecastTransformService {
       if (forecastItem === undefined) {
         forecastItem = {
           day: key,
-          forecastOnDay: [item],
+          forecastOnDay: [],
         };
       }
 
@@ -37,5 +35,11 @@ export class CityWeatherForecastTransformService {
     });
 
     return Array.from(this.transformMap).map(([_name, value]) => value);
+  }
+
+  public getTransformItem(
+    key: string
+  ): CityWeatherForecastTransform | undefined {
+    return this.transformMap.get(key);
   }
 }

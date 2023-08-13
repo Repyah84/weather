@@ -26,7 +26,7 @@ export class CityGeocodingCacheService {
 
   public getCityGeocodingReverseCache(
     coord: CityWeatherCoord
-  ): Observable<CityGeocoding> {
+  ): Observable<CityGeocoding[]> {
     return this._dataCache.getCachedData({
       key: `${KeyCache.CITY_GEOCODING_REVERSE}${parsToString(coord)}`,
       cachingObservable: () => this._geocoding.getCityGeocodingReverse(coord),

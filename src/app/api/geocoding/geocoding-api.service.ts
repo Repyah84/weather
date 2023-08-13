@@ -28,7 +28,7 @@ export class GeocodingApiService {
   public getCityGeocodingReverse(
     { lat, lon }: CityWeatherCoord,
     limit = 1
-  ): Observable<CityGeocoding> {
+  ): Observable<CityGeocoding[]> {
     const params = new HttpParams().appendAll({
       appid: API_KEY,
       lat,
@@ -36,7 +36,7 @@ export class GeocodingApiService {
       limit,
     });
 
-    return this._http.get<CityGeocoding>(`${API_PATH}/geo/1.0/reverse`, {
+    return this._http.get<CityGeocoding[]>(`${API_PATH}/geo/1.0/reverse`, {
       params,
     });
   }

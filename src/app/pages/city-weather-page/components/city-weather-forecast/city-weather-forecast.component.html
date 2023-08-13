@@ -1,1 +1,27 @@
-<p>city-weather-forecast works!</p>
+<div class="header">
+  <button
+    *ngFor="let item of forecast"
+    [class.active]="item.day === selectDay"
+    (click)="selectDay = item.day"
+    class="btn-day"
+  >
+    {{ item.day }}
+  </button>
+</div>
+
+<div class="main">
+  <div class="main-action">
+    <span class="main-title">{{
+      selectDay | getDateByDay | date : "EEEE MMMM d OOO"
+    }}</span>
+  </div>
+
+  <div *ngFor="let item of forecast" class="weather-details">
+    <ng-container *ngIf="item.day === selectDay">
+      <app-city-weather-details
+        *ngFor="let item of item.forecastOnDay"
+        [weatherDetails]="item"
+      ></app-city-weather-details>
+    </ng-container>
+  </div>
+</div>

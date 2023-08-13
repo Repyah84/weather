@@ -1,0 +1,80 @@
+%_sun-box {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  row-gap: 10px;
+}
+
+%_sun-description {
+  font-size: calc(2vw * var(--of-set));
+
+  font-weight: 700;
+
+  color: var(--city-weather-color-primary);
+}
+
+%_sun {
+  width: 60px;
+  height: 60px;
+
+  border-radius: 50%;
+}
+
+:host {
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(#ffffff 40%, #e9eefa);
+
+  border-radius: 10px;
+}
+
+.sun {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.header-title {
+  font-size: calc(3vw * var(--of-set));
+
+  font-weight: 700;
+}
+
+.sun-rise-box {
+  @extend %_sun-box;
+}
+
+.sun-set-box {
+  @extend %_sun-box;
+}
+
+.sun-rise {
+  @extend %_sun;
+
+  background-color: #ffde17;
+
+  box-shadow: 0 0 10px 4px #f8d408;
+}
+
+.sun-set {
+  @extend %_sun;
+
+  background-color: #ffae17;
+
+  box-shadow: 0 0 10px 4px #ffae17;
+}
+
+.sun-rise-description {
+  @extend %_sun-description;
+}
+
+.sun-set-description {
+  @extend %_sun-description;
+}

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CityWeatherForecastCacheService } from '../city-weather-forecast-cache/city-weather-forecast-cache.service';
 import { CityGeocodingCacheService } from '../city-geocoding-cache/city-geocoding-cache.service';
-import { Observable, map, switchMap } from 'rxjs';
+import { Observable, forkJoin, map } from 'rxjs';
 import { CityWeatherCoord, CityWeatherForecastFull } from '@types';
 
 @Injectable({
@@ -16,15 +16,11 @@ export class CityWeatherForecastService {
   public getCityWeatherForecast(
     coord: CityWeatherCoord
   ): Observable<CityWeatherForecastFull> {
-    return this._geocoding.getCityGeocodingReverseCache(coord).pipe(
-      switchMap((geocoding) =>
-        this._weatherForecast.getCityWeatherForecastCache(coord).pipe(
-          map((weatherForecast) => ({
-            geocoding,
-            weatherForecast,
-          }))
-        )
-      )
-    );
+    return forkJoin({
+      geocoding: this._geocoding
+        .getCityGeocodingReverseCache(coord)
+        .pipe(map(([geocoding]) => geocoding)),
+      weatherForecast: this._weatherForecast.getCityWeatherForecastCache(coord),
+    });
   }
 }

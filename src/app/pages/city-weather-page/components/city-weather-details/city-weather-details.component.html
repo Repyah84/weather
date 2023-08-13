@@ -1,0 +1,46 @@
+<div class="header">
+  <span class="title-date">{{
+    weatherDetails.dt_txt | date : "shortTime"
+  }}</span>
+</div>
+
+<div class="weather">
+  <div *ngFor="let item of weatherDetails.weather" class="weather-box">
+    <img [src]="item.icon | weatherIcon : 2" alt="weather" class="image" />
+
+    <span class="weather-description">{{ item.description }}</span>
+  </div>
+</div>
+
+<div>
+  <span class="weather-temp">{{ weatherDetails.main.temp }} C</span>
+</div>
+
+<div *ngIf="weatherDetails.main as main" class="main">
+  <app-weather-description-item [value]="main.feels_like" class="weather-item">
+    Feels like
+  </app-weather-description-item>
+
+  <app-weather-description-item [value]="main.temp_min" class="weather-item">
+    Temp min
+  </app-weather-description-item>
+
+  <app-weather-description-item [value]="main.temp_max" class="weather-item">
+    Temp max
+  </app-weather-description-item>
+
+  <app-weather-description-item [value]="main.pressure" class="weather-item">
+    Pressure
+  </app-weather-description-item>
+
+  <app-weather-description-item [value]="main.humidity" class="weather-item">
+    humidity
+  </app-weather-description-item>
+
+  <app-weather-description-item
+    value="{{ weatherDetails.wind.speed }}m/s"
+    class="weather-item"
+  >
+    Wind
+  </app-weather-description-item>
+</div>

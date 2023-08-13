@@ -13,10 +13,13 @@ import { CityWeatherForecastTransform } from '@types';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CityWeatherForecastComponent implements OnInit {
+  public selectDay!: string;
+
   @Input({ required: true })
   public forecast!: CityWeatherForecastTransform[];
 
   public ngOnInit(): void {
-    console.log(this.forecast);
+    console.log('@@@@', this.forecast);
+    this.selectDay = this.forecast[0].day;
   }
 }

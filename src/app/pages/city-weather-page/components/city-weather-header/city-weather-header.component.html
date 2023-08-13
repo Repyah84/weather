@@ -1,0 +1,29 @@
+<div class="header-title">
+  <span class="city-name">{{ weather.geocoding.name }} </span>
+  <span class="city-state">{{ weather.geocoding.state }}</span>
+  <span class="city-country">{{ weather.geocoding.country }} </span>
+</div>
+
+<div class="popularity">
+  Popularity: {{ weather.weatherForecast.city.population }}
+</div>
+
+<div class="sun">
+  <div class="sun-rise-box">
+    <div class="sun-rise"></div>
+
+    <span class="sun-rise-description">
+      Sun Rise
+      {{ weather.weatherForecast.city.sunrise | date : "h:mm a" }}
+    </span>
+  </div>
+
+  <div class="sun-set-box">
+    <div class="sun-set"></div>
+
+    <span class="sun-set-description">
+      Sun Set
+      {{ weather.weatherForecast.city.sunset | date : "h:mm a" }}
+    </span>
+  </div>
+</div>

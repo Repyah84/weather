@@ -14,14 +14,14 @@
     </div>
   </div>
 
-  <div class="weather" *ngFor="let item of weather.cityWeather.weather">
+  <div class="weather" *ngIf="weather.cityWeather.weather[0] as weather">
     <img
       class="weather-image"
-      [src]="item.icon | weatherIcon : 4"
+      [src]="weather.icon | weatherIcon : 4"
       alt="weather"
     />
 
-    <span class="weather-description">{{ item.description }}</span>
+    <span class="weather-description">{{ weather.description }}</span>
   </div>
 </div>
 
@@ -34,37 +34,47 @@
     </div>
 
     <div class="details-box">
-      <div class="details__item">
-        <span>Fils like: </span>
-        <span class="weather__value">{{ main.feels_like }}</span>
-      </div>
+      <app-weather-description-item
+        [value]="main.feels_like"
+        class="details__item"
+      >
+        <span>Fils like:&nbsp;</span>
+      </app-weather-description-item>
 
-      <div class="details__item">
-        <span>Max Temp: </span>
-        <span class="weather__value">{{ main.temp_max }}</span>
-      </div>
+      <app-weather-description-item
+        [value]="main.temp_max"
+        class="details__item"
+      >
+        <span>Max Temp:&nbsp;</span>
+      </app-weather-description-item>
 
-      <div class="details__item">
-        <span>Min Temp: </span>
-        <span class="weather__value">{{ main.temp_min }}</span>
-      </div>
+      <app-weather-description-item
+        [value]="main.temp_min"
+        class="details__item"
+      >
+        <span>Min Temp:&nbsp;</span>
+      </app-weather-description-item>
 
-      <div class="details__item">
-        <span>Wind: </span>
-        <span class="weather__value"
-          >{{ weather.cityWeather.wind.speed }}/ms</span
-        >
-      </div>
+      <app-weather-description-item
+        value="{{ weather.cityWeather.wind.speed }} m/s"
+        class="details__item"
+      >
+        <span>Wind:&nbsp;</span>
+      </app-weather-description-item>
 
-      <div class="details__item">
-        <span>Humidity: </span>
-        <span class="weather__value">{{ main.humidity }}</span>
-      </div>
+      <app-weather-description-item
+        [value]="main.humidity"
+        class="details__item"
+      >
+        <span>Humidity:&nbsp;</span>
+      </app-weather-description-item>
 
-      <div class="details__item">
-        <span>Pressure: </span>
-        <span class="weather__value">{{ main.pressure }}</span>
-      </div>
+      <app-weather-description-item
+        [value]="main.pressure"
+        class="details__item"
+      >
+        <span>Pressure:&nbsp;</span>
+      </app-weather-description-item>
     </div>
   </div>
 </div>
