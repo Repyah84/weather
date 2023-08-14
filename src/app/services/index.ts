@@ -19,3 +19,7 @@ export * from './store/store.service';
 export * from './city-weather-store/city-weather-store.service';
 
 export * from './snackbar/snackbar.service';
+
+export * from './global-error-handler/global-error-handler.service';
+
+export * from './loading/loading.service';

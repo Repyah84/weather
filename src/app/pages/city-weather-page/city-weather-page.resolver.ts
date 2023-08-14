@@ -1,5 +1,5 @@
 import { inject } from '@angular/core';
-import { ActivatedRouteSnapshot, ResolveFn } from '@angular/router';
+import { ActivatedRouteSnapshot, ResolveFn, Router } from '@angular/router';
 import { jsonPars } from '@helpers';
 import { CityWeatherForecastService } from '@services';
 import { CityWeatherForecastFull } from '@types';
@@ -9,6 +9,7 @@ export const cityWeatherPageResolver: ResolveFn<
   Observable<CityWeatherForecastFull>
 > = (route: ActivatedRouteSnapshot) => {
   const weatherForecast = inject(CityWeatherForecastService);
+  const router = inject(Router);
 
   const parm = route.paramMap.get('coord');
 

@@ -11,6 +11,11 @@
   </div>
 
   <button
+    [title]="
+      (coord | storeHasWeatherCity)
+        ? 'Delete city from favorite list'
+        : 'Add city to favorite list'
+    "
     [class.btn-add-favorite--active]="coord | storeHasWeatherCity"
     (click)="onAddToStore()"
     class="btn-add-favorite"

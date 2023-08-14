@@ -36,7 +36,7 @@ export class CityWeatherForecastComponent implements OnInit {
     const result = this._weatherStore.toggleCoord(parsToString(this.coord));
 
     this._snackbar.setMessage(
-      `City was ${result === 1 ? 'add in' : 'delete from'} favorite list`
+      `City was ${result === 1 ? 'add to' : 'delete from'} favorite list`
     );
   }
 }

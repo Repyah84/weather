@@ -1,0 +1,47 @@
+:host {
+  display: inline-flex;
+}
+
+.lds {
+  position: relative;
+
+  width: 42px;
+  height: 40px;
+}
+
+.lds div {
+  position: absolute;
+
+  width: 10px;
+
+  background: #fff;
+
+  animation: lds 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+
+.lds div:nth-child(1) {
+  left: 0;
+  animation-delay: -0.24s;
+}
+
+.lds div:nth-child(2) {
+  left: 16px;
+  animation-delay: -0.12s;
+}
+
+.lds div:nth-child(3) {
+  left: 32px;
+  animation-delay: 0;
+}
+
+@keyframes lds {
+  0% {
+    top: 4px;
+    height: 30px;
+  }
+  50%,
+  100% {
+    top: 16px;
+    height: 10px;
+  }
+}
