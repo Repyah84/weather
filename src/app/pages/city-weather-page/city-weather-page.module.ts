@@ -6,6 +6,7 @@ import { cityWeatherPageResolver } from './city-weather-page.resolver';
 import { CityWeatherForecastComponent } from './components/city-weather-forecast/city-weather-forecast.component';
 import {
   StoreHasWeatherCityModule,
+  SvgModule,
   WeatherDescriptionItemModule,
   WeatherIconModule,
 } from '@modules';
@@ -40,6 +41,7 @@ const routes: Routes = [
     WeatherIconModule,
     WeatherDescriptionItemModule,
     StoreHasWeatherCityModule,
+    SvgModule,
   ],
 })
 export class CityWeatherPageModule {}

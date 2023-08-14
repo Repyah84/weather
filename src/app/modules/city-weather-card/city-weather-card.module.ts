@@ -4,6 +4,7 @@ import { NgFor, NgIf, NgOptimizedImage } from '@angular/common';
 import { WeatherIconModule } from '../weather-icon/weather-icon.module';
 import { RouterModule } from '@angular/router';
 import { WeatherDescriptionItemModule } from '../weather-description-item/weather-description-item.module';
+import { SvgModule } from '../svg/svg.module';
 
 @NgModule({
   declarations: [CityWeatherCardComponent],
@@ -14,6 +15,7 @@ import { WeatherDescriptionItemModule } from '../weather-description-item/weathe
     NgIf,
     RouterModule,
     WeatherDescriptionItemModule,
+    SvgModule,
   ],
   exports: [CityWeatherCardComponent],
 })

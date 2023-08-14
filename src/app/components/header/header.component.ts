@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { SvgDashboardComponent } from '@modules/svg/svg-dashboard/svg-dashboard.component';
+import { SvgListComponent } from '@modules/svg/svg-list/svg-list.component';
 
 @Component({
   selector: 'app-header',
@@ -11,10 +13,12 @@ export class HeaderComponent {
     {
       link: 'dashboard',
       title: 'Dashboard',
+      icon: SvgDashboardComponent as any,
     },
     {
       link: 'favorite-city-list',
       title: 'Favorite list',
+      icon: SvgListComponent as any,
     },
   ];
 }

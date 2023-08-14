@@ -1,3 +1,7 @@
+%_typography-color {
+  color: var(--city-weather-color-primary);
+}
+
 :host {
   display: block;
 
@@ -40,7 +44,6 @@
 }
 
 .temperature__value {
-  // color: var(--city-weather-color-ascent);
   font-weight: 700;
 }
 
@@ -60,6 +63,8 @@
 }
 
 .weather-description {
+  margin-top: -14px;
+
   max-width: 100px;
 
   font-size: 14px;
@@ -71,7 +76,7 @@
   display: flex;
   justify-content: space-between;
 
-  margin: 10px 0;
+  margin-bottom: 10px;
 
   box-shadow: 0 1px 0 0 var(--city-weather-color-secondary);
 
@@ -93,7 +98,27 @@
   gap: 10px;
 }
 
-.link,
+.link {
+  @extend %_typography-color;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  white-space: nowrap;
+
+  line-height: 14px;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+}
+
 .details__title {
-  color: var(--city-weather-color-primary);
+  @extend %_typography-color;
+
+  display: flex;
+  align-items: center;
 }

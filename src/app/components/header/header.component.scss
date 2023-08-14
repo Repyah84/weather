@@ -5,36 +5,35 @@
   padding: 0 15px;
 
   display: flex;
-  column-gap: 5px;
+  column-gap: 15px;
 
   min-height: 40px;
 
-  background-color: #83a0eb;
-
-  box-shadow: 0 3px 0 0 var(--city-weather-color-primary);
+  background-color: var(--city-weather-color-primary);
 
   z-index: 2;
 }
 
 .router-link {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-
-  padding: 0 10px;
+  column-gap: 10px;
 
   margin-top: 2px;
 
-  transition: color 200ms;
-
   font-weight: 700;
 
-  &:hover {
-    color: white;
-  }
+  color: white;
+
+  transition: box-shadow 150ms;
+}
+
+.icon-box {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
 }
 
 .is-active {
-  color: white;
-
-  background-color: var(--city-weather-color-primary);
+  box-shadow: 0 -3.5px 0 0 inset white;
 }

@@ -4,5 +4,9 @@
   routerLinkActive="is-active"
   queryParamsHandling="merge"
   class="router-link"
-  >{{ link.title }}</a
 >
+  <div class="icon-box">
+    <ng-container [ngComponentOutlet]="link.icon"></ng-container>
+  </div>
+  {{ link.title }}
+</a>
