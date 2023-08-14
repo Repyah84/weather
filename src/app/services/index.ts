@@ -17,3 +17,5 @@ export * from './city-weather-forecast-transform/city-weather-forecast-transform
 export * from './store/store.service';
 
 export * from './city-weather-store/city-weather-store.service';
+
+export * from './snackbar/snackbar.service';

@@ -5,7 +5,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { parsToString } from '@helpers';
-import { CityWeatherStoreService } from '@services';
+import { CityWeatherStoreService, SnackbarService } from '@services';
 import { CityWeatherCoord, CityWeatherForecastTransform } from '@types';
 
 @Component({
@@ -23,14 +23,20 @@ export class CityWeatherForecastComponent implements OnInit {
   @Input({ required: true })
   public forecast!: CityWeatherForecastTransform[];
 
-  public constructor(private readonly _weatherStore: CityWeatherStoreService) {}
+  public constructor(
+    private readonly _weatherStore: CityWeatherStoreService,
+    private readonly _snackbar: SnackbarService
+  ) {}
 
   public ngOnInit(): void {
-    console.log('@@@@', this.forecast);
     this.selectDay = this.forecast[0].day;
   }
 
   public onAddToStore(): void {
-    this._weatherStore.toggleCoord(parsToString(this.coord));
+    const result = this._weatherStore.toggleCoord(parsToString(this.coord));
+
+    this._snackbar.setMessage(
+      `City was ${result === 1 ? 'add in' : 'delete from'} favorite list`
+    );
   }
 }

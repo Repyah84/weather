@@ -1,5 +1,6 @@
 :host {
   display: block;
+  position: relative;
 }
 
 .form {
@@ -60,4 +61,15 @@
   font-size: 24px;
 
   flex: 1;
+}
+
+.error {
+  position: absolute;
+  bottom: -20px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  color: var(--city-weather-color-ascent);
 }

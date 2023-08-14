@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CityWeatherForecastTransformService } from '@services';
 import { CityWeatherCoord, CityWeatherForecastFull } from '@types';
 
@@ -14,13 +9,9 @@ import { CityWeatherCoord, CityWeatherForecastFull } from '@types';
   providers: [CityWeatherForecastTransformService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CityWeatherPageComponent implements OnInit, OnInit {
+export class CityWeatherPageComponent {
   @Input()
   public weatherForecast!: CityWeatherForecastFull;
-
-  public ngOnInit(): void {
-    console.log(this.weatherForecast);
-  }
 
   public get coord(): CityWeatherCoord {
     const { lat, lon } = this.weatherForecast.geocoding;

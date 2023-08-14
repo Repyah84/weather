@@ -8,15 +8,18 @@ const routes: Routes = [
     redirectTo: 'dashboard',
   },
   {
+    title: 'Dashboard',
     path: 'dashboard',
     loadChildren: () =>
       import('@pages').then((m) => m.CityWeatherDashboardPageModule),
   },
   {
+    title: 'City weather details',
     path: 'city/:coord',
     loadChildren: () => import('@pages').then((m) => m.CityWeatherPageModule),
   },
   {
+    title: 'Favorite cities list',
     path: 'favorite-city-list',
     loadChildren: () =>
       import('@pages').then((m) => m.CityWeatherFavoriteListPageModule),

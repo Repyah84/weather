@@ -12,3 +12,19 @@
     />
   </label>
 </form>
+
+<span
+  @errorAnime
+  *ngIf="group.controls.search?.errors?.['minlength']"
+  class="error"
+>
+  Min length of a city name is 3 symbol
+</span>
+
+<span
+  @errorAnime
+  *ngIf="group.controls.search?.errors?.['citySearch']"
+  class="error"
+>
+  City didn't found
+</span>

@@ -1,0 +1,7 @@
+<div @openHide *ngIf="message$ | async as message" class="snackbar">
+  <span>
+    {{ message }}
+  </span>
+
+  <button class="btn-close" (click)="onClose()">CLOSE</button>
+</div>

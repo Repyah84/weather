@@ -59,15 +59,17 @@ export class CityWeatherStoreService {
     this._store.setItem(WEATHER_LIST_STORE_KEY, parsToString(newDate));
   }
 
-  public toggleCoord(item: string): void {
+  public toggleCoord(item: string): number {
     const isCoord = this.hasCoord(item);
 
     if (isCoord) {
       this.deleteCoord(item);
 
-      return;
+      return 0;
     }
 
     this.setCoord(item);
+
+    return 1;
   }
 }

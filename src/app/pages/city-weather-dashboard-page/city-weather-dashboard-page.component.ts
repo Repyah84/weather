@@ -1,10 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnChanges,
-  SimpleChanges,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { CityWeatherFull, RouterParams } from '@types';
 
@@ -14,7 +8,7 @@ import { CityWeatherFull, RouterParams } from '@types';
   styleUrls: ['./city-weather-dashboard-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CityWeatherDashboardPageComponent implements OnChanges {
+export class CityWeatherDashboardPageComponent {
   @Input()
   public cityWeatherList: CityWeatherFull[] | null = null;
 
@@ -22,13 +16,6 @@ export class CityWeatherDashboardPageComponent implements OnChanges {
   public search: string | undefined;
 
   public constructor(private readonly _route: Router) {}
-
-  //TODO Remove
-  public ngOnChanges(changes: SimpleChanges): void {
-    console.log('LIST', this.cityWeatherList);
-
-    console.log('search', this.search);
-  }
 
   public onSearch(value: string | undefined): void {
     this._route.navigate([], {
