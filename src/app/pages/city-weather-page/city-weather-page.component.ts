@@ -5,7 +5,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { CityWeatherForecastTransformService } from '@services';
-import { CityWeatherForecastFull } from '@types';
+import { CityWeatherCoord, CityWeatherForecastFull } from '@types';
 
 @Component({
   selector: 'app-city-weather-page',
@@ -20,5 +20,11 @@ export class CityWeatherPageComponent implements OnInit, OnInit {
 
   public ngOnInit(): void {
     console.log(this.weatherForecast);
+  }
+
+  public get coord(): CityWeatherCoord {
+    const { lat, lon } = this.weatherForecast.geocoding;
+
+    return { lat, lon };
   }
 }

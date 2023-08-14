@@ -15,7 +15,7 @@ export class CityWeatherCityListService {
     private readonly _cityWeather: CityWeatherCacheService
   ) {}
 
-  public getCityWeatherList(
+  public getCityWeatherListByName(
     cityName: string
   ): Observable<CityWeatherFull[] | null> {
     return this._geocoding.getCityGeocodingCache(cityName).pipe(
@@ -27,6 +27,21 @@ export class CityWeatherCityListService {
         return this._getCityWeatherListFull(geocodingList);
       })
     );
+  }
+
+  public getCityWeatherListByCoord(
+    value: CityWeatherCoord[]
+  ): Observable<CityWeatherFull[]> {
+    const list = value.map((coord) =>
+      forkJoin({
+        geocoding: this._geocoding
+          .getCityGeocodingReverseCache(coord)
+          .pipe(map(([city]) => city)),
+        cityWeather: this._cityWeather.getCityWeatherCache(coord),
+      })
+    );
+
+    return forkJoin([...list]);
   }
 
   public getDefaultCityList(): Observable<CityWeatherFull[]> {

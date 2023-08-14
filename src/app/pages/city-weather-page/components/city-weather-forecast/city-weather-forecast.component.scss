@@ -1,3 +1,24 @@
+%_btn {
+  background-color: #f3f6fb;
+
+  flex-shrink: 0;
+
+  cursor: pointer;
+
+  color: var(--city-weather-color-primary);
+
+  transform: translateY(-2px);
+
+  box-shadow: 2px 2px 0 0 var(--city-weather-color-secondary);
+
+  transition: box-shadow 150ms, transform 150ms;
+}
+
+%_btn-active {
+  box-shadow: 0 0 0 0 var(--city-weather-color-secondary);
+  transform: translateY(0);
+}
+
 :host {
   flex: 1;
 
@@ -8,12 +29,19 @@
 }
 
 .header {
+  display: flex;
+  column-gap: 20px;
+
+  justify-content: space-between;
+  align-items: center;
+  overflow: auto;
+}
+
+.header-action {
   padding: 10px 0;
 
   display: flex;
   column-gap: 15px;
-
-  overflow: auto;
 }
 
 .main {
@@ -30,25 +58,28 @@
 }
 
 .btn-day {
-  background-color: #f3f6fb;
-
-  flex-shrink: 0;
+  @extend %_btn;
 
   padding: 10px 20px;
 
   border-radius: 10px;
 
   font-weight: 700;
+}
 
-  cursor: pointer;
+.btn-add-favorite {
+  @extend %_btn;
 
-  color: var(--city-weather-color-primary);
+  margin-right: 2px;
 
-  transform: translateY(-2px);
+  padding: 10px;
 
-  box-shadow: 2px 2px 0 0 var(--city-weather-color-secondary);
+  border-radius: 5px;
 
-  transition: box-shadow 150ms, transform 150ms;
+  width: 50px;
+  height: 50px;
+
+  color: darkgrey;
 }
 
 .main {
@@ -80,7 +111,12 @@
   gap: 20px;
 }
 
-.active {
-  box-shadow: 0 0 0 0 var(--city-weather-color-secondary);
-  transform: translateY(0);
+.btn-day--active {
+  @extend %_btn-active;
+}
+
+.btn-add-favorite--active {
+  @extend %_btn-active;
+
+  color: var(--city-weather-color-primary);
 }

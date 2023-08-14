@@ -4,7 +4,11 @@ import { CityWeatherPageComponent } from './city-weather-page.component';
 import { RouterModule, Routes } from '@angular/router';
 import { cityWeatherPageResolver } from './city-weather-page.resolver';
 import { CityWeatherForecastComponent } from './components/city-weather-forecast/city-weather-forecast.component';
-import { WeatherDescriptionItemModule, WeatherIconModule } from '@modules';
+import {
+  StoreHasWeatherCityModule,
+  WeatherDescriptionItemModule,
+  WeatherIconModule,
+} from '@modules';
 import { CityWeatherHeaderComponent } from './components/city-weather-header/city-weather-header.component';
 import { CityWeatherDetailsComponent } from './components/city-weather-details/city-weather-details.component';
 import { CityWeatherPageGetDatePipe } from './city-weather-page-get-date.pipe';
@@ -35,6 +39,7 @@ const routes: Routes = [
     CommonModule,
     WeatherIconModule,
     WeatherDescriptionItemModule,
+    StoreHasWeatherCityModule,
   ],
 })
 export class CityWeatherPageModule {}

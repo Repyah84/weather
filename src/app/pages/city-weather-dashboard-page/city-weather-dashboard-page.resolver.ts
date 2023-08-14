@@ -16,5 +16,5 @@ export const cityWeatherDashboardPageResolver: ResolveFn<
     return of(null);
   }
 
-  return cityList.getCityWeatherList(param);
+  return cityList.getCityWeatherListByName(param);
 };

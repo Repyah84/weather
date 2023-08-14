@@ -12,6 +12,8 @@
   background-color: #83a0eb;
 
   box-shadow: 0 3px 0 0 var(--city-weather-color-primary);
+
+  z-index: 2;
 }
 
 .router-link {
@@ -22,13 +24,17 @@
 
   margin-top: 2px;
 
-  background-color: var(--city-weather-color-secondary);
+  transition: color 200ms;
+
+  font-weight: 700;
+
+  &:hover {
+    color: white;
+  }
 }
 
 .is-active {
   color: white;
-
-  font-weight: 700;
 
   background-color: var(--city-weather-color-primary);
 }

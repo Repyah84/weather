@@ -13,3 +13,7 @@ export * from './city-weather-forecast/city-weather-forecast.service';
 export * from './date/date.service';
 
 export * from './city-weather-forecast-transform/city-weather-forecast-transform.service';
+
+export * from './store/store.service';
+
+export * from './city-weather-store/city-weather-store.service';

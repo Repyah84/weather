@@ -1,1 +1,14 @@
-<p>favorite-city-list-page works!</p>
+<h2>Your favorite cities</h2>
+
+<p *ngIf="cityWeatherFavorite === null; else cities">
+  You don't have any favorite cities
+</p>
+
+<ng-template #cities>
+  <div class="city-card-list">
+    <app-city-weather-card
+      *ngFor="let item of cityWeatherFavorite"
+      [weather]="item"
+    ></app-city-weather-card>
+  </div>
+</ng-template>
