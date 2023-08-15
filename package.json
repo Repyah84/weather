@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "deploy:git": "ng build --base-href=https://Repyah84.github.io/weather/ && npx angular-cli-ghpages --dir=dist/weather"
   },
   "private": true,
   "dependencies": {
