@@ -1,25 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-:root {
-  --city-weather-card-elevation-x: 2px 2px 10px 2px rgba(0, 0, 0, 0.3);
-
-  --city-weather-color-primary: #898cff;
-
-  --city-weather-color-ascent: #fc8a6a;
-
-  --city-weather-color-secondary: #f0f0f0;
-
-  --city-weather-color-gentle: #f3f6fb;
-
-  --of-set: 2;
-
-  @media (min-width: 720px) {
-    --of-set: 1.5;
-  }
-
-  @media (min-width: 1024px) {
-    --of-set: 1;
-  }
-}
+@use "./styles/variables";
 
 * {
   box-sizing: border-box;
@@ -33,7 +13,8 @@ body {
 
 body {
   font-family: "Roboto", sans-serif;
-  color: #5c5c5c;
+
+  color: var(--city-weather-color-strict);
 }
 
 button {
@@ -44,9 +25,6 @@ button {
 
 a {
   text-decoration: none;
-  outline: none;
 
-  &:active {
-    color: var(--city-weather-color-primary);
-  }
+  outline: none;
 }

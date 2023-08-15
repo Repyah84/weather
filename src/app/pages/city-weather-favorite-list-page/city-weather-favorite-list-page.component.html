@@ -1,7 +1,8 @@
-<h2>Your favorite cities</h2>
+<h2 class="title">Your favorite cities</h2>
 
-<p *ngIf="cityWeatherFavorite === null; else cities">
-  You don't have any favorite cities
+<p class="message" *ngIf="cityWeatherFavorite === null; else cities">
+  You don't have any favorite cities If you want to add a city to your favorite
+  list, please move to a city's details more and mark it as a favorite on!
 </p>
 
 <ng-template #cities>

@@ -1,0 +1,37 @@
+%weather-button {
+  flex-shrink: 0;
+
+  cursor: pointer;
+
+  transform: translateY(-2px);
+
+  box-shadow: 2px 2px 0 0 var(--city-weather-color-secondary);
+
+  transition: box-shadow 150ms, transform 150ms;
+
+  background-color: var(--city-weather-color-gentle);
+
+  transition: color 150ms;
+}
+
+%weather-button--active {
+  box-shadow: 0 0 0 0 var(--city-weather-color-secondary);
+
+  transform: translateY(0);
+}
+
+.weather-button {
+  @extend %weather-button;
+
+  &__content {
+    opacity: 0.8;
+  }
+
+  &:focus &__content {
+    opacity: 1;
+  }
+
+  &:hover &__content {
+    opacity: 1;
+  }
+}

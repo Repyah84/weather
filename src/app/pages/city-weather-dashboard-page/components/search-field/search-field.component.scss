@@ -1,3 +1,5 @@
+@use "../../../../../styles/button";
+
 :host {
   display: block;
   position: relative;
@@ -9,29 +11,16 @@
 }
 
 .btn-form {
-  background-color: var(--city-weather-color-gentle);
-
-  flex-shrink: 0;
-
   width: 60px;
   height: 60px;
   padding: 18px;
 
   border-radius: 10px;
 
-  color: var(--city-weather-color-primary);
-
-  cursor: pointer;
-
-  transform: translateY(-2px);
-
-  box-shadow: 2px 2px 0 0 var(--city-weather-color-secondary);
-
-  transition: box-shadow 150ms, transform 150ms;
+  color: var(--city-weather-color-active);
 
   &:active {
-    box-shadow: 0 0 0 0 var(--city-weather-color-secondary);
-    transform: translateY(0);
+    @extend %weather-button--active;
   }
 }
 

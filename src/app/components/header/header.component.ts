@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { SvgDashboardComponent } from '@modules/svg/svg-dashboard/svg-dashboard.component';
-import { SvgListComponent } from '@modules/svg/svg-list/svg-list.component';
+import { SvgDashboardComponent } from '@modules/svg-dashboard/svg-dashboard.component';
+import { SvgListComponent } from '@modules/svg-list/svg-list.component';
 
 @Component({
   selector: 'app-header',

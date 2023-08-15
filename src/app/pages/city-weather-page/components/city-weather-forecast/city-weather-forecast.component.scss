@@ -1,22 +1,11 @@
+@use "../../../../../styles/button";
+
 %_btn {
-  background-color: var(--city-weather-color-gentle);
-
-  flex-shrink: 0;
-
-  cursor: pointer;
-
-  color: var(--city-weather-color-primary);
-
-  transform: translateY(-2px);
-
-  box-shadow: 2px 2px 0 0 var(--city-weather-color-secondary);
-
-  transition: box-shadow 150ms, transform 150ms;
+  color: var(--city-weather-color-active);
 }
 
-%_btn-active {
-  box-shadow: 0 0 0 0 var(--city-weather-color-secondary);
-  transform: translateY(0);
+%_btn--active {
+  @extend %weather-button--active;
 }
 
 :host {
@@ -106,17 +95,17 @@
 
   display: flex;
   flex-wrap: wrap;
-  align-items: start;
+  align-items: flex-start;
 
   gap: 20px;
 }
 
 .btn-day--active {
-  @extend %_btn-active;
+  @extend %_btn--active;
 }
 
 .btn-add-favorite--active {
-  @extend %_btn-active;
+  @extend %_btn--active;
 
-  color: var(--city-weather-color-primary);
+  color: var(--city-weather-color-active);
 }

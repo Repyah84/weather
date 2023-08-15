@@ -4,9 +4,11 @@
       *ngFor="let item of forecast"
       [class.btn-day--active]="item.day === selectDay"
       (click)="selectDay = item.day"
-      class="btn-day"
+      class="weather-button btn-day"
     >
-      {{ item.day }}
+      <span class="weather-button__content">
+        {{ item.day }}
+      </span>
     </button>
   </div>
 
@@ -18,9 +20,9 @@
     "
     [class.btn-add-favorite--active]="coord | storeHasWeatherCity"
     (click)="onAddToStore()"
-    class="btn-add-favorite"
+    class="weather-button btn-add-favorite"
   >
-    <app-svg-push-pin></app-svg-push-pin>
+    <app-svg-push-pin class="weather-button__content"></app-svg-push-pin>
   </button>
 </div>
 
