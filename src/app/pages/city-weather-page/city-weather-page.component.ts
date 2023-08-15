@@ -13,6 +13,7 @@ export class CityWeatherPageComponent {
   @Input()
   public weatherForecast!: CityWeatherForecastFull;
 
+  //TODO side effect fix
   public get coord(): CityWeatherCoord {
     const { lat, lon } = this.weatherForecast.geocoding;
 
