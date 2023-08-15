@@ -21,7 +21,6 @@ import { LoadingComponent } from './components/loading/loading.component';
   ],
   imports: [
     CommonModule,
-    NgFor,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
