@@ -5,6 +5,7 @@ import { WeatherIconModule } from '../weather-icon/weather-icon.module';
 import { RouterModule } from '@angular/router';
 import { WeatherDescriptionItemModule } from '../weather-description-item/weather-description-item.module';
 import { SvgModule } from '../svg/svg.module';
+import { StoreHasWeatherCityModule } from '../store-has-weather-city/store-has-weather-city.module';
 
 @NgModule({
   declarations: [CityWeatherCardComponent],
@@ -16,6 +17,7 @@ import { SvgModule } from '../svg/svg.module';
     RouterModule,
     WeatherDescriptionItemModule,
     SvgModule,
+    StoreHasWeatherCityModule,
   ],
   exports: [CityWeatherCardComponent],
 })

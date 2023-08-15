@@ -1,27 +1,34 @@
 <div class="head">
-  <div class="city-info-box">
-    <div *ngIf="weather.geocoding as geocoding" class="city-info">
-      <span class="city-name">{{ geocoding.name }}</span>
-      <span class="city-state">{{ geocoding.state }}</span>
-      <span class="city-country">{{ geocoding.country }}</span>
-    </div>
+  <div *ngIf="weather.geocoding as geocoding" class="city-info">
+    <span class="city">
+      {{ geocoding.name }} {{ geocoding.state }} {{ geocoding.country }}
+    </span>
 
-    <div class="temperature">
-      <span class="temperature__value">{{
-        weather.cityWeather.main.temp
-      }}</span>
-      <span class="temperature__metric">C</span>
-    </div>
+    <app-svg-push-pin
+      class="icon-push-pin"
+      *ngIf="{ lat: geocoding.lat, lon: geocoding.lon } | storeHasWeatherCity"
+    ></app-svg-push-pin>
   </div>
 
-  <div class="weather" *ngIf="weather.cityWeather.weather[0] as weather">
-    <img
-      class="weather-image"
-      [src]="weather.icon | weatherIcon : 4"
-      alt="weather"
-    />
+  <div class="weather-detail">
+    <div class="city-info-box">
+      <div class="temperature">
+        <span class="temperature__value">{{
+          weather.cityWeather.main.temp
+        }}</span>
+        <span class="temperature__metric">C</span>
+      </div>
+    </div>
 
-    <span class="weather-description">{{ weather.description }}</span>
+    <div class="weather" *ngIf="weather.cityWeather.weather[0] as weather">
+      <img
+        class="weather-image"
+        [src]="weather.icon | weatherIcon : 4"
+        alt="weather"
+      />
+
+      <span class="weather-description">{{ weather.description }}</span>
+    </div>
   </div>
 </div>
 
