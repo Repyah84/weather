@@ -7,7 +7,6 @@ const OPEN_HIDE_ANIMATION = trigger('openHide', [
     style({ opacity: 0, transform: 'translateY(100%)' }),
     animate('100ms ease-out', style({ opacity: '*', transform: '*' })),
   ]),
-
   transition(':leave', [
     animate(
       '100ms ease-out',

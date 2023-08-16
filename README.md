@@ -22,4 +22,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Deployment
 
-[Weather](https://Repyah84.github.io/weather/)
+Run `npm run deploy:GitHub` The script automatically builds and then deploys the application to GitHub.
+
+You can see the result from this link [Weather](https://Repyah84.github.io/weather/)
