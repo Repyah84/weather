@@ -1,7 +1,8 @@
-<div class="header-title">
-  <span class="city-name">{{ weather.geocoding.name }} </span>
-  <span class="city-state">{{ weather.geocoding.state }}</span>
-  <span class="city-country">{{ weather.geocoding.country }} </span>
+<div *ngIf="weather.geocoding as geocoding" class="header-title">
+  <span>
+    {{ weather.geocoding.name }} {{ weather.geocoding.state }}
+    {{ geocoding.country }}
+  </span>
 </div>
 
 <div class="popularity">
