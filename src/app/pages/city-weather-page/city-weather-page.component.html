@@ -1,6 +1,7 @@
 <app-city-weather-header [weather]="weatherForecast"></app-city-weather-header>
 
 <app-city-weather-forecast
-  [coord]="coord"
+  [cityCoord]="coord"
   [forecast]="weatherForecast.weatherForecast.list | weatherForecastTransform"
+  (storeCityChange)="inStoreCityChange()"
 ></app-city-weather-forecast>

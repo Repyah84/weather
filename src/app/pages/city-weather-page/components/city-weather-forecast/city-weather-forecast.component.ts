@@ -1,11 +1,11 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   Input,
   OnInit,
+  Output,
 } from '@angular/core';
-import { parsToString } from '@helpers';
-import { CityWeatherStoreService, SnackbarService } from '@services';
 import { CityWeatherCoord, CityWeatherForecastTransform } from '@types';
 
 @Component({
@@ -18,25 +18,19 @@ export class CityWeatherForecastComponent implements OnInit {
   public selectDay!: string;
 
   @Input({ required: true })
-  public coord!: CityWeatherCoord;
+  public cityCoord!: CityWeatherCoord;
 
   @Input({ required: true })
   public forecast!: CityWeatherForecastTransform[];
 
-  public constructor(
-    private readonly _weatherStore: CityWeatherStoreService,
-    private readonly _snackbar: SnackbarService
-  ) {}
+  @Output()
+  public readonly storeCityChange = new EventEmitter<void>();
 
   public ngOnInit(): void {
     this.selectDay = this.forecast[0].day;
   }
 
-  public onAddToStore(): void {
-    const result = this._weatherStore.toggleCoord(parsToString(this.coord));
-
-    this._snackbar.setMessage(
-      `City was ${result === 1 ? 'add to' : 'delete from'} favorite list`
-    );
+  public onToggleCity(): void {
+    this.storeCityChange.emit();
   }
 }

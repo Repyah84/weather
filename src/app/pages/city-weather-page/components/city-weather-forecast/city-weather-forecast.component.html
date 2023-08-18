@@ -14,12 +14,12 @@
 
   <button
     [title]="
-      (coord | storeHasWeatherCity)
+      (cityCoord | storeHasWeatherCity)
         ? 'Delete city from favorite list'
         : 'Add city to favorite list'
     "
-    [class.btn-add-favorite--active]="coord | storeHasWeatherCity"
-    (click)="onAddToStore()"
+    [class.btn-add-favorite--active]="cityCoord | storeHasWeatherCity"
+    (click)="onToggleCity()"
     class="__weather-button__ btn-add-favorite"
   >
     <app-svg-push-pin class="__weather-button__content__"></app-svg-push-pin>

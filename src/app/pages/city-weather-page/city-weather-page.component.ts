@@ -1,5 +1,15 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { CityWeatherForecastTransformService } from '@services';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
+import { parsToString } from '@helpers';
+import {
+  CityWeatherForecastTransformService,
+  CityWeatherStoreService,
+  SnackbarService,
+} from '@services';
 import { CityWeatherCoord, CityWeatherForecastFull } from '@types';
 
 @Component({
@@ -9,14 +19,34 @@ import { CityWeatherCoord, CityWeatherForecastFull } from '@types';
   providers: [CityWeatherForecastTransformService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CityWeatherPageComponent {
+export class CityWeatherPageComponent implements OnInit {
+  public coord!: CityWeatherCoord;
+
   @Input()
   public weatherForecast!: CityWeatherForecastFull;
 
-  //TODO side effect fix
-  public get coord(): CityWeatherCoord {
+  public constructor(
+    private readonly _weatherStore: CityWeatherStoreService,
+    private readonly _snackbar: SnackbarService
+  ) {}
+
+  public ngOnInit(): void {
+    this.initCityCoord();
+  }
+
+  public inStoreCityChange(): void {
+    const result = this._weatherStore.toggleCoord(parsToString(this.coord));
+
+    this.initCityCoord();
+
+    this._snackbar.setMessage(
+      `City was ${result === 1 ? 'add to' : 'delete from'} favorite list`
+    );
+  }
+
+  private initCityCoord(): void {
     const { lat, lon } = this.weatherForecast.geocoding;
 
-    return { lat, lon };
+    this.coord = { lat, lon };
   }
 }
