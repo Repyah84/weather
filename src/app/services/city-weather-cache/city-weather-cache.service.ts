@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { CityWeatherApiService } from '@api';
 import { CACHE_TIME } from '@const';
-import { parsToString } from '@helpers';
-import { CityWeather, CityWeatherCoord, KeyCache } from '@types';
+import { CityWeather, CityWeatherCoord } from '@types';
 import { Observable } from 'rxjs';
 import { DataCacheService } from '../data-cache/data-cache.service';
+import { getCacheKay } from '@helpers';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +17,7 @@ export class CityWeatherCacheService {
 
   public getCityWeatherCache(coord: CityWeatherCoord): Observable<CityWeather> {
     return this._dataCache.getCachedData({
-      key: `${KeyCache.CITY_WEATHER}${parsToString(coord)}`,
+      key: getCacheKay('CITY_WEATHER', coord),
       cachingObservable: () => this._cityWeather.getCityWeather(coord),
       cacheTime: CACHE_TIME,
     });

@@ -20,18 +20,18 @@
   transform: translateY(0);
 }
 
-.weather-button {
+.__weather-button__ {
   @extend %weather-button;
 
-  &__content {
+  &content__ {
     opacity: 0.8;
   }
 
-  &:focus &__content {
+  &:focus &content__ {
     opacity: 1;
   }
 
-  &:hover &__content {
+  &:hover &content__ {
     opacity: 1;
   }
 }

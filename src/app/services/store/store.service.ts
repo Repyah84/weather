@@ -15,7 +15,7 @@ export class StoreService {
   public setItem(key: string, item: string): void {
     try {
       localStorage.setItem(key, item);
-    } catch (error) {
+    } catch {
       throw new Error('localStorage set item error');
     }
   }

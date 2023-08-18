@@ -9,7 +9,7 @@ export class GlobalErrorHandler implements ErrorHandler {
     private readonly _ngZone: NgZone
   ) {}
 
-  handleError(error: any) {
+  public handleError(error: any) {
     if (!(error instanceof HttpErrorResponse)) {
       error = error.rejection;
     }

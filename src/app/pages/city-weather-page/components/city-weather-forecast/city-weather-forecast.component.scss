@@ -1,9 +1,5 @@
 @use "../../../../../styles/button";
 
-%_btn {
-  color: var(--city-weather-color-active);
-}
-
 %_btn--active {
   @extend %weather-button--active;
 }
@@ -47,18 +43,16 @@
 }
 
 .btn-day {
-  @extend %_btn;
-
   padding: 10px 20px;
 
   border-radius: 10px;
 
   font-weight: 700;
+
+  color: var(--city-weather-color-active);
 }
 
 .btn-add-favorite {
-  @extend %_btn;
-
   margin-right: 2px;
 
   padding: 10px;
@@ -102,6 +96,10 @@
 
 .btn-day--active {
   @extend %_btn--active;
+
+  .__weather-button__content__ {
+    opacity: 1;
+  }
 }
 
 .btn-add-favorite--active {

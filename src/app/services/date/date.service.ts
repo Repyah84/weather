@@ -10,15 +10,15 @@ import { Inject, Injectable, LOCALE_ID, Optional } from '@angular/core';
 })
 export class DateService {
   public constructor(
-    @Inject(LOCALE_ID) private locale: string,
+    @Inject(LOCALE_ID) private readonly _locale: string,
     @Inject(DATE_PIPE_DEFAULT_OPTIONS)
     @Optional()
-    private defaultOptions?: DatePipeConfig | null
+    private readonly _defaultOptions?: DatePipeConfig | null
   ) {}
 
   public transform(value: string, format: string): string {
-    const _timezone = this.defaultOptions?.timezone ?? undefined;
+    const _timezone = this._defaultOptions?.timezone ?? undefined;
 
-    return formatDate(value, format, this.locale, _timezone);
+    return formatDate(value, format, this._locale, _timezone);
   }
 }
