@@ -6,10 +6,7 @@
   class="router-link"
 >
   <div class="icon-box">
-    <ng-container
-      [ngComponentOutlet]="link.icon"
-      [ngComponentOutletNgModule]="iconsSvgModule"
-    ></ng-container>
+    <ng-container [ngComponentOutlet]="link.icon"></ng-container>
   </div>
   {{ link.title }}
 </a>

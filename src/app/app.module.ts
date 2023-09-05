@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { SvgModule, WeatherIconModule } from '@modules';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
@@ -20,12 +19,9 @@ import { LoadingComponent } from './components/loading/loading.component';
     LoadingComponent,
   ],
   imports: [
-    CommonModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    WeatherIconModule,
-    SvgModule,
     BrowserAnimationsModule,
   ],
   bootstrap: [AppComponent],

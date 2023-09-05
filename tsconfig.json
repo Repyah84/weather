@@ -25,7 +25,7 @@
       "@const": ["src/app/const"],
       "@modules": ["src/app/modules"],
       "@modules*": ["src/app/modules/svg*"],
-      "@pages": ["src/app/pages"],
+      "@pages*": ["src/app/pages*"],
       "@types": ["src/app/types"],
       "@services": ["src/app/services"],
       "@helpers": ["src/app/helpers"]
